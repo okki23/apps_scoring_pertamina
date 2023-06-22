@@ -1,0 +1,71 @@
+version: '3'
+services:
+#PHP Service
+  app:
+    build:
+     context: .
+     dockerfile: Dockerfile
+    image: php_service 
+    restart: unless-stopped
+    container_name: php_engine 
+    tty: true
+    ports:
+      - "9005:9000"
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+    - ./:/var/www
+    - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks: 
+    - app-network
+#Nginx Service
+  webserver:
+    image: nginx:alpine 
+    restart: unless-stopped
+    tty: true
+    container_name: nginx_engine
+    ports:
+    - "8082:80"
+    - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+    - app-network
+#MySQL Service
+  db:
+    image: mysql:latest
+    restart: unless-stopped
+    tty: true
+    container_name: db_engine
+    volumes:
+    - ./mysql/data:/var/lib/mysql
+    ports:
+    - "4509:3306"
+    environment:
+      MYSQL_DATABASE: db_laravel 
+      MYSQL_ROOT_PASSWORD: password
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+    - app-network
+#PHPMyAdmin Service
+  phpmyadmin:
+    container_name: phpmyadmin_wp
+    image: phpmyadmin/phpmyadmin
+    ports:
+    - "4508:80"
+    links:
+    - db:db
+    environment:
+      MYSQL_DATABASE: db_laravel 
+      MYSQL_ROOT_PASSWORD: password
+      UPLOAD_LIMIT: 3000000000
+    networks:
+    - app-network
+#Docker Networks
+networks:
+    app-network: 
+ 
