@@ -10,12 +10,12 @@
     <!-- Scripts -->
     <title>Scoring Managment Apps - Pertamina</title>
     <!-- CSS files -->
-    <link href="{{ asset('assets/css/tabler.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/css/tabler-flags.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/css/tabler-payments.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/css/tabler-vendors.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/css/demo.min.css?1684106062') }}" rel="stylesheet"/>
-    <link rel="icon" href="{{ asset('assets/dist/img/pertaminalogs.png') }}" type="image/png" sizes="16x16">
+    <link href="{{ asset('assets/dist/css/tabler.min.css?1684106062') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/dist/css/tabler-flags.min.css?1684106062') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/dist/css/tabler-payments.min.css?1684106062') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/dist//css/tabler-vendors.min.css?1684106062') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/dist/css/demo.min.css?1684106062') }}" rel="stylesheet"/>
+    <link rel="icon" href="{{ asset('assets/dist/dist/img/pertaminalogs.png') }}" type="image/png" sizes="16x16">
     <style>
       @import url('https://rsms.me/inter/inter.css');
       :root {
@@ -27,7 +27,7 @@
     </style>
   </head>
   <body  class=" d-flex flex-column">
-    <script src="{{ asset('assets/js/demo-theme.min.js?1684106062') }}"></script>
+    <script src="{{ asset('assets/dist/js/demo-theme.min.js?1684106062') }}"></script>
     <div class="page page-center">
       <div class="container container-tight py-4">
         <div class="text-center mb-4">
@@ -63,7 +63,7 @@
     </div>
     <!-- Libs JS -->
     <!-- Tabler Core -->
-    <script src="{{ asset('assets/js/tabler.min.js?1684106062') }}" defer></script>
-    <script src="{{ asset('assets/js/demo.min.js?1684106062') }}" defer></script>
+    <script src="{{ asset('assets/dist/js/tabler.min.js?1684106062') }}" defer></script>
+    <script src="{{ asset('assets/dist/js/demo.min.js?1684106062') }}" defer></script>
   </body>
 </html>

@@ -14,6 +14,14 @@
     <link href="{{ asset('assets/dist/css/demo.min.css?1684106062') }}" rel="stylesheet"/>
     <link rel="icon" href="{{ asset('assets/dist/img/pertaminalogs.png') }}" type="image/png" sizes="16x16">
     <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet"/>  
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"> --}}
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
     <style>
       @import url('https://rsms.me/inter/inter.css');
       :root {
@@ -35,6 +43,7 @@
           </button>
           <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <a href=".">
+                Sistem Aplikasi Penilaian
               {{-- <img src="{{ asset('assets/img/logooxygenpng.png')}}" width="110" height="32" alt="Tabler" class="navbar-brand-image"> --}}
             </a>
           </h1>
@@ -45,9 +54,9 @@
             <div class="d-none d-md-flex">
 
             </div>
-            <div class="nav-item dropdown">
+            <div class="nav-item dropdown"> 
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(./assets/static/avatars/000m.jpg)"></span>
+                <span class="avatar avatar-sm" style="background-image: url(./assets/dist/img/pertaminalogs.png)"></span>
                 <div class="d-none d-xl-block ps-2">
                   <div>Okki Setyawan</div>
                   <div class="mt-1 small text-muted">Administrator</div>
@@ -75,7 +84,7 @@
             <div class="container-xl">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="./" >
+                  <a class="nav-link" href="{{ route('home') }}" >
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
                     </span>
@@ -101,21 +110,24 @@
                   <div class="dropdown-menu">
                     <div class="dropdown-menu-columns">
                       <div class="dropdown-menu-column">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('pegawai') }}">
                           Pegawai
                         </a>
-                        <a class="dropdown-item" href="./blank.html">
-                          Jabatan
+                        <a class="dropdown-item" href="{{ route('jeniskerja') }}">
+                          Jenis Pekerjaan
                         </a>
-                        <a class="dropdown-item" href="./badges.html">
-                          Unit 
+                        <a class="dropdown-item" href="{{ route('kategori') }}">
+                          Fungsi 
                         </a>
-                        <a class="dropdown-item" href="./badges.html">
-                         Lokasi 
+                        <a class="dropdown-item" href="{{ route('lokasi') }}">
+                          Lokasi 
                         </a>
-                        <a class="dropdown-item" href="./badges.html">
-                          Event 
+                        <a class="dropdown-item" href="{{ route('kategori') }}">
+                          Kategori 
                         </a>
+                        <a class="dropdown-item" href="{{ route('jenisor') }}">
+                          Jenis Olahraga 
+                        </a> 
 
                       </div>
                     </div>
@@ -138,7 +150,7 @@
                     <div class="dropdown-menu">
                       <div class="dropdown-menu-columns">
                         <div class="dropdown-menu-column">
-                          <a class="dropdown-item" href="./accordion.html">
+                          <a class="dropdown-item" href="{{ route('trans_event') }}">
                             Record Event 
                           </a> 
                         </div>
@@ -157,10 +169,10 @@
                     <div class="dropdown-menu">
                       <div class="dropdown-menu-columns">
                         <div class="dropdown-menu-column">
-                          <a class="dropdown-item" href="./accordion.html">
+                          <a class="dropdown-item" href="{{ route('report_individu') }}">
                             Individu
                           </a>
-                          <a class="dropdown-item" href="./blank.html">
+                          <a class="dropdown-item" href="{{ route('report_all') }}">
                             Laporan Akhir
                           </a> 
                         </div>
@@ -196,7 +208,7 @@
                 <ul class="list-inline list-inline-dots mb-0">
                   <li class="list-inline-item">
                     Copyright &copy; 2023
-                    <a href="." class="link-secondary">AU Production</a>
+                    <a href="#" class="link-secondary">AU Production</a>
                     All rights reserved.
                   </li>
 
