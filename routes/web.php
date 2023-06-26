@@ -39,7 +39,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/jeniskerja',[JenisPekerjaanController::class,'index'])->name('jeniskerja');
     Route::get('/kategori',[KategoriController::class,'index'])->name('kategori');
     Route::get('/lokasi',[LokasiController::class,'index'])->name('lokasi');
+
     Route::get('/pegawai',[PegawaiController::class,'index'])->name('pegawai');
+    Route::post('pegawai_save',[PegawaiController::class,'save'])->name('pegawai_save');
 
     Route::get('/trans_event',[TransEventController::class,'index'])->name('trans_event');
     Route::get('/report_individu',[ReportIndividuController::class,'index'])->name('report_individu');
