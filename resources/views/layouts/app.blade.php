@@ -1,230 +1,209 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Sistem Aplikasi Penilaian</title>
-    <!-- CSS files -->
-    <link href="{{ asset('assets/dist/css/tabler.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/dist/css/tabler-flags.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/dist/css/tabler-payments.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/dist//css/tabler-vendors.min.css?1684106062') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/dist/css/demo.min.css?1684106062') }}" rel="stylesheet"/>
-    <link rel="icon" href="{{ asset('assets/dist/img/pertaminalogs.png') }}" type="image/png" sizes="16x16">
-    <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet"/>  
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-    
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"> --}}
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 
-    <style>
-      @import url('https://rsms.me/inter/inter.css');
-      :root {
-      	--tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-      }
-      body {
-      	font-feature-settings: "cv03", "cv04", "cv11";
-      }
-    </style>
-  </head>
-  <body >
-    <script src="{{ asset('assets/dist/js/demo-theme.min.js?1684106062') }}"></script>
-    <div class="page">
-      <!-- Navbar -->
-      <header class="navbar navbar-expand-md d-print-none" >
-        <div class="container-xl">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-            <a href=".">
-                Sistem Aplikasi Penilaian
-              {{-- <img src="{{ asset('assets/img/logooxygenpng.png')}}" width="110" height="32" alt="Tabler" class="navbar-brand-image"> --}}
-            </a>
-          </h1>
-          <div class="navbar-nav flex-row order-md-last">
-            <div class="nav-item d-none d-md-flex me-3">
 
-            </div>
-            <div class="d-none d-md-flex">
+<head>
+  <title>Scoring Management Apps - Pertamina</title>
+    <meta charset="utf-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">  
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Admin template that can be used to build dashboards for CRM, CMS, etc." />
+    <meta name="author" content="Potenza Global Solutions" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- app favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/img/pertamina_icon.png') }}">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- plugin stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors.css') }}" />
+    <!-- app style -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
 
-            </div>
-            <div class="nav-item dropdown"> 
-              <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(./assets/dist/img/pertaminalogs.png)"></span>
-                <div class="d-none d-xl-block ps-2">
-                  <div>Okki Setyawan</div>
-                  <div class="mt-1 small text-muted">Administrator</div>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <!-- plugins -->
+    <script src="{{ asset('assets/js/vendors.js') }}"></script>
+
+    <!-- custom app -->
+    <script src="{{ asset('assets/js/app.js') }} "></script>
+</head>
+
+<body>
+    <!-- begin app -->
+    <div class="app">
+        <!-- begin app-wrap -->
+        <div class="app-wrap">
+            <!-- begin pre-loader -->
+            <div class="loader">
+                <div class="h-100 d-flex justify-content-center">
+                    <div class="align-self-center">
+                        <img src="{{ asset('assets/img/loader/loader.svg') }}" alt="loader">
+                    </div>
                 </div>
-              </a>
-              <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <a href="./settings.html" class="dropdown-item">Pengaturan Akun</a>
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">
-                 {{ __('Logout') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-                {{-- <a href="./sign-in.html" class="dropdown-item">Keluar</a> --}}
-              </div>
             </div>
-          </div>
-        </div>
-      </header>
-      <header class="navbar-expand-md">
-        <div class="collapse navbar-collapse" id="navbar-menu">
-          <div class="navbar">
-            <div class="container-xl">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('home') }}" >
-                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
-                    </span>
-                    <span class="nav-link-title">
-                      Beranda
-                    </span>
-                  </a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cylinder" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M12 6m-7 0a7 3 0 1 0 14 0a7 3 0 1 0 -14 0"></path>
-                            <path d="M5 6v12c0 1.657 3.134 3 7 3s7 -1.343 7 -3v-12"></path>
-                         </svg>
-                    </span>
-                    <span class="nav-link-title">
-                      Master
-                    </span>
-                  </a> 
-                  
-                  <div class="dropdown-menu">
-                    <div class="dropdown-menu-columns">
-                      <div class="dropdown-menu-column">
-                        <a class="dropdown-item" href="{{ route('pegawai') }}">
-                          Pegawai
-                        </a>
-                        <a class="dropdown-item" href="{{ route('jeniskerja') }}">
-                          Jenis Pekerjaan
-                        </a>
-                        <a class="dropdown-item" href="{{ route('kategori') }}">
-                          Fungsi 
-                        </a>
-                        <a class="dropdown-item" href="{{ route('lokasi') }}">
-                          Lokasi 
-                        </a>
-                        <a class="dropdown-item" href="{{ route('kategori') }}">
-                          Kategori 
-                        </a>
-                        <a class="dropdown-item" href="{{ route('jenisor') }}">
-                          Jenis Olahraga 
-                        </a> 
+            <!-- end pre-loader -->
+            <!-- begin app-header -->
+            <header class="app-header top-bar">
+                <!-- begin navbar -->
+                <nav class="navbar navbar-expand-md">
 
-                      </div>
+                    <!-- begin navbar-header -->
+                    <div class="navbar-header d-flex align-items-center">
+                        <a href="javascript:void:(0)" class="mobile-toggle"><i class="ti ti-align-right"></i></a>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="{{ asset('assets/img/pertamina_logo.png') }} " class="img-fluid logo-desktop" alt="logo" />
+                            <img src="{{ asset('assets/img/pertamina_logo.png') }} " class="img-fluid logo-mobile" alt="logo" />
+                        </a>
                     </div>
-                  </div>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                      <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                            <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
-                         </svg>
-                      </span>
-                      <span class="nav-link-title">
-                        Transaksi
-                      </span>
-                    </a>
-                    <div class="dropdown-menu">
-                      <div class="dropdown-menu-columns">
-                        <div class="dropdown-menu-column">
-                          <a class="dropdown-item" href="{{ route('trans_event') }}">
-                            Record Event 
-                          </a> 
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ti ti-align-left"></i>
+                    </button>
+                    <!-- end navbar-header -->
+                    <!-- begin navigation -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navigation d-flex">
+                            <ul class="navbar-nav nav-left">
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" class="nav-link sidebar-toggle">
+                                        <i class="ti ti-align-right"></i>
+                                    </a>
+                                </li>  
+                            </ul>
+                            <ul class="navbar-nav nav-right ml-auto">
+                               
+                                
+                                <li class="nav-item dropdown user-profile">
+                                    <a href="javascript:void(0)" class="nav-link dropdown-toggle " id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="assets/img/avtar/02.jpg" alt="avtar-img">
+                                        <span class="bg-success user-status"></span>
+                                    </a>
+                                    <div class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown">
+                                        <div class="bg-gradient px-4 py-3">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="mr-1">
+                                                    <h4 class="text-white mb-0">Administrator</h4> 
+                                                </div>
+                                                <a href="#" class="text-white font-20 tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout"> <i
+                                                                class="zmdi zmdi-power"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="p-4">
+                                            <a class="dropdown-item d-flex nav-link" href="javascript:void(0)">
+                                                <i class="fa fa-user pr-2 text-success"></i> Profile</a>
+                                         
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                      </div>
                     </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                      <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /><path d="M16 5.25l-8 4.5" /></svg>
-                      </span>
-                      <span class="nav-link-title">
-                        Report
-                      </span>
-                    </a>
-                    <div class="dropdown-menu">
-                      <div class="dropdown-menu-columns">
-                        <div class="dropdown-menu-column">
-                          <a class="dropdown-item" href="{{ route('report_individu') }}">
-                            Individu
-                          </a>
-                          <a class="dropdown-item" href="{{ route('report_all') }}">
-                            Laporan Akhir
-                          </a> 
+                    <!-- end navigation -->
+                </nav>
+                <!-- end navbar -->
+            </header>
+            <!-- end app-header -->
+            <!-- begin app-container -->
+            <div class="app-container">
+                <!-- begin app-nabar -->
+                <aside class="app-navbar">
+                    <!-- begin sidebar-nav -->
+                    <div class="sidebar-nav scrollbar scroll_light">
+                        <ul class="metismenu " id="sidebarNav">
+                            {{-- <li class="nav-static-title">Personal</li> --}}
+                            <li><a href="{{ route('home') }}" aria-expanded="false"><i class="nav-icon ti ti-desktop"></i><span class="nav-title">Dashboard</span></a> </li>
+                            <li>
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-server"></i>
+                                    <span class="nav-title">Master</span>
+                                    {{-- <span class="nav-label label label-danger">9</span> --}}
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='{{ route('pegawai') }}'>Pegawai</a> </li>
+                                    <li> <a href='{{ route('fungsi') }}'>Fungsi</a> </li>
+                                    <li> <a href='{{ route('jeniskerja') }}'>Jenis Pekerjaan</a> </li>
+                                    <li> <a href='{{ route('jenisor') }}'>Jenis Olahraga</a> </li>
+                                    <li> <a href='{{ route('kategori') }}'>Kategori</a> </li> 
+                                    <li> <a href='{{ route('lokasi') }}'>Lokasi</a> </li> 
+                                </ul> 
+                            </li>
+                            <li>
+                              <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                  <i class="nav-icon ti ti ti-files"></i>
+                                  <span class="nav-title">Transaksi</span> 
+                              </a>
+                              <ul aria-expanded="false">
+                                  <li class="active"> <a href='{{ route('trans_event') }}'>Transaction Logs</a> </li> 
+                              </ul>
+                           </li>
+                           <li>
+                            <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <i class="nav-icon ti ti ti-agenda"></i>
+                                <span class="nav-title">Report</span> 
+                            </a>
+                            <ul aria-expanded="false">
+                                <li class="active"> <a href='{{ route('report_individu') }}'>Report Individu</a> </li> 
+                                <li class="active"> <a href='{{ route('report_all') }}'>Report All</a> </li> 
+                            </ul>
+                          </li>
+                                        
+                        </ul>
+                    </div>
+                    <!-- end sidebar-nav -->
+                </aside>
+                <!-- end app-navbar -->
+                <!-- begin app-main -->
+                <div class="app-main" id="main">
+                    <!-- begin container-fluid -->
+                    <div class="container-fluid">
+                        <!-- begin row -->
+                        <div class="row">
+                            <div class="col-md-12 m-b-30">
+                                <!-- begin page title -->
+                                <div class="d-block d-lg-flex flex-nowrap align-items-center">
+                                    <div class="page-title mr-4 pr-4">
+                                        {{-- <h1>Dashboard</h1> --}}
+                                    </div>
+                                     
+                                    
+                                </div>
+                                <!-- end page title -->
+                            </div>
                         </div>
-                      </div>
+                        <!-- Notification -->
+                        <div class="row">
+                            
+                        </div>
+                        <!-- end row -->
+                        <!-- begin row -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                              @yield('content') 
+                            </div>
+                        </div>
+                       
                     </div>
-                  </li> 
-              </ul>
-
+                    <!-- end container-fluid -->
+                </div>
+                <!-- end app-main -->
             </div>
-          </div>
+            <!-- end app-container -->
+            <!-- begin footer -->
+            {{-- <footer class="footer">
+                <div class="row">
+                    <div class="col-12 col-sm-6 text-center text-sm-left">
+                        <p>&copy; Copyright 2019. All rights reserved.</p>
+                    </div>
+                   <div class="col  col-sm-6 ml-sm-auto text-center text-sm-right">
+                        <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
+                    </div>
+                </div>
+            </footer> --}}
+            <!-- end footer -->
         </div>
-      </header>
-      <div class="page-wrapper">
-        <!-- Page header -->
-        {{-- <div class="page-header d-print-none">
-
-        </div> --}}
-        <!-- Page body -->
-        <div class="page-body">
-          <div class="container-xl">
-
-            @yield('content')
-
-          </div>
-        </div>
-        <footer class="footer footer-transparent d-print-none">
-          <div class="container-xl">
-            <div class="row text-center align-items-center flex-row-reverse">
-              <div class="col-lg-auto ms-lg-auto">
-                 
-              </div>
-              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                <ul class="list-inline list-inline-dots mb-0">
-                  <li class="list-inline-item">
-                    Copyright &copy; 2023
-                    <a href="#" class="link-secondary">AU Production</a>
-                    All rights reserved.
-                  </li>
-
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </div>
+        <!-- end app-wrap -->
     </div>
+    <!-- end app -->
 
-     
-    <!-- Tabler Core -->
-    <script src="{{ asset('assets/dist/js/tabler.min.js?1684106062') }}" defer></script>
-    <script src="{{ asset('assets/dist/js/demo.min.js?1684106062') }}" defer></script>
-    
+</body>
 
-  </body>
+
 </html>

@@ -42,10 +42,13 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/pegawai',[PegawaiController::class,'index'])->name('pegawai');
     Route::post('pegawai_save',[PegawaiController::class,'save'])->name('pegawai_save');
+    Route::get('/get_all_data',[PegawaiController::class,'get_all_data'])->name('pegawai_all');
+    Route::post('/pegawai_destroy',[PegawaiController::class,'pegawai_destroy'])->name('pegawai_destroy');
+    Route::post('/get_pegawai',[PegawaiController::class,'get_pegawai'])->name('get_pegawai');
 
     Route::get('/trans_event',[TransEventController::class,'index'])->name('trans_event');
     Route::get('/report_individu',[ReportIndividuController::class,'index'])->name('report_individu');
-    Route::get('/report_all',[ReportAllController::class,'index'])->name('report_all');
+    Route::get('/report_all',[ReportAllController::class,'index'])->name('report_all'); 
 
     Route::resource('roles', RoleController::class, [
         'as' => 'roles'
