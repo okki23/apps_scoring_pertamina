@@ -46,7 +46,7 @@ class FungsiController extends Controller
         return $data; 
     }
 
-    public function get_all_data(Request $request){
+    public function fungsi_all_data(Request $request){
 
         if ($request->ajax()) {
             $data = FungsiModel::all();

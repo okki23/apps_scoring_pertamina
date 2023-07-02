@@ -35,7 +35,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth']], function() { 
 
     Route::get('/jenisor',[JenisOlahragaController::class,'index'])->name('jenisor');
-    Route::get('/jeniskerja',[JenisPekerjaanController::class,'index'])->name('jeniskerja');
+    // Route::get('/jeniskerja',[JenisPekerjaanController::class,'index'])->name('jeniskerja');
     Route::get('/kategori',[KategoriController::class,'index'])->name('kategori');
     Route::get('/lokasi',[LokasiController::class,'index'])->name('lokasi');
 
@@ -50,6 +50,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/fungsi_all',[FungsiController::class,'get_all_data'])->name('fungsi_all');
     Route::post('/fungsi_destroy',[FungsiController::class,'fungsi_destroy'])->name('fungsi_destroy');
     Route::post('/fungsi_put',[FungsiController::class,'fungsi_put'])->name('fungsi_put');
+
+    Route::get('/jeniskerja',[JenisPekerjaanController::class,'index'])->name('jeniskerja');
+    Route::post('jeniskerja_save',[JenisPekerjaanController::class,'save'])->name('jeniskerja_save');
+    Route::get('/jeniskerja_all',[JenisPekerjaanController::class,'jeniskerja_all_data'])->name('jeniskerja_all_data');
+    Route::post('/jeniskerja_destroy',[JenisPekerjaanController::class,'jeniskerja_destroy'])->name('jeniskerja_destroy');
+    Route::post('/jeniskerja_put',[JenisPekerjaanController::class,'jeniskerja_put'])->name('jeniskerja_put');
 
     Route::get('/trans_event',[TransEventController::class,'index'])->name('trans_event');
     Route::get('/report_individu',[ReportIndividuController::class,'index'])->name('report_individu');
