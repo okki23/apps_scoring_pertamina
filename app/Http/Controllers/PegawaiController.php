@@ -63,7 +63,7 @@ class PegawaiController extends Controller
 
     }
     
-    public function get_pegawai(Request $request){
+    public function pegawai_put(Request $request){
         $id = $request->id;
         $data = PegawaiModel::findOrfail($id);
         return $data; 

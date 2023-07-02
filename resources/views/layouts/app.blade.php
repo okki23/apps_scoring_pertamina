@@ -118,7 +118,7 @@
                                 </a>
                                 <ul aria-expanded="false">
                                     <li class="active"> <a href='{{ route('pegawai') }}'>Pegawai</a> </li>
-                                    <li> <a href='{{ route('fungsi') }}'>Fungsi</a> </li>
+                                    <li> <a href='{{ route('fungsi') }}'>Fungsi Pekerjaan</a> </li>
                                     <li> <a href='{{ route('jeniskerja') }}'>Jenis Pekerjaan</a> </li>
                                     <li> <a href='{{ route('jenisor') }}'>Jenis Olahraga</a> </li>
                                     <li> <a href='{{ route('kategori') }}'>Kategori</a> </li> 

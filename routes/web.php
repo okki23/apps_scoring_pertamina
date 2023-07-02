@@ -32,9 +32,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::group(['middleware' => ['auth']], function() {
- 
-    Route::get('/fungsi',[FungsiController::class,'index'])->name('fungsi');
+Route::group(['middleware' => ['auth']], function() { 
+
     Route::get('/jenisor',[JenisOlahragaController::class,'index'])->name('jenisor');
     Route::get('/jeniskerja',[JenisPekerjaanController::class,'index'])->name('jeniskerja');
     Route::get('/kategori',[KategoriController::class,'index'])->name('kategori');
@@ -42,9 +41,15 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/pegawai',[PegawaiController::class,'index'])->name('pegawai');
     Route::post('pegawai_save',[PegawaiController::class,'save'])->name('pegawai_save');
-    Route::get('/get_all_data',[PegawaiController::class,'get_all_data'])->name('pegawai_all');
+    Route::get('/pegawai_all',[PegawaiController::class,'get_all_data'])->name('pegawai_all');
     Route::post('/pegawai_destroy',[PegawaiController::class,'pegawai_destroy'])->name('pegawai_destroy');
-    Route::post('/get_pegawai',[PegawaiController::class,'get_pegawai'])->name('get_pegawai');
+    Route::post('/pegawai_put',[PegawaiController::class,'pegawai_put'])->name('pegawai_put');
+
+    Route::get('/fungsi',[FungsiController::class,'index'])->name('fungsi');
+    Route::post('fungsi_save',[FungsiController::class,'save'])->name('fungsi_save');
+    Route::get('/fungsi_all',[FungsiController::class,'get_all_data'])->name('fungsi_all');
+    Route::post('/fungsi_destroy',[FungsiController::class,'fungsi_destroy'])->name('fungsi_destroy');
+    Route::post('/fungsi_put',[FungsiController::class,'fungsi_put'])->name('fungsi_put');
 
     Route::get('/trans_event',[TransEventController::class,'index'])->name('trans_event');
     Route::get('/report_individu',[ReportIndividuController::class,'index'])->name('report_individu');
