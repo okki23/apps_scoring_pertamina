@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // Route::get('/jenisor',[JenisOlahragaController::class,'index'])->name('jenisor');
     // Route::get('/jeniskerja',[JenisPekerjaanController::class,'index'])->name('jeniskerja');
-    Route::get('/kategori',[KategoriController::class,'index'])->name('kategori');
+    // Route::get('/kategori',[KategoriController::class,'index'])->name('kategori');
     Route::get('/lokasi',[LokasiController::class,'index'])->name('lokasi');
 
     Route::get('/pegawai',[PegawaiController::class,'index'])->name('pegawai');
@@ -62,6 +62,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/jenisor_all',[JenisOlahragaController::class,'jenisor_all_data'])->name('jenisor_all_data');
     Route::post('/jenisor_destroy',[JenisOlahragaController::class,'jenisor_destroy'])->name('jenisor_destroy');
     Route::post('/jenisor_put',[JenisOlahragaController::class,'jenisor_put'])->name('jenisor_put');
+
+    Route::get('/kategori',[KategoriController::class,'index'])->name('kategori');
+    Route::post('kategori_save',[KategoriController::class,'save'])->name('kategori_save');
+    Route::get('/kategori_all',[KategoriController::class,'kategori_all_data'])->name('kategori_all_data');
+    Route::post('/kategori_destroy',[KategoriController::class,'kategori_destroy'])->name('kategori_destroy');
+    Route::post('/kategori_put',[KategoriController::class,'kategori_put'])->name('kategori_put');
 
     Route::get('/trans_event',[TransEventController::class,'index'])->name('trans_event');
     Route::get('/report_individu',[ReportIndividuController::class,'index'])->name('report_individu');
