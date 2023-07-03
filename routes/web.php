@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth']], function() {
     // Route::get('/jenisor',[JenisOlahragaController::class,'index'])->name('jenisor');
     // Route::get('/jeniskerja',[JenisPekerjaanController::class,'index'])->name('jeniskerja');
     // Route::get('/kategori',[KategoriController::class,'index'])->name('kategori');
-    Route::get('/lokasi',[LokasiController::class,'index'])->name('lokasi');
+    // Route::get('/lokasi',[LokasiController::class,'index'])->name('lokasi');
 
     Route::get('/pegawai',[PegawaiController::class,'index'])->name('pegawai');
     Route::post('pegawai_save',[PegawaiController::class,'save'])->name('pegawai_save');
@@ -68,6 +68,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/kategori_all',[KategoriController::class,'kategori_all_data'])->name('kategori_all_data');
     Route::post('/kategori_destroy',[KategoriController::class,'kategori_destroy'])->name('kategori_destroy');
     Route::post('/kategori_put',[KategoriController::class,'kategori_put'])->name('kategori_put');
+
+    Route::get('/lokasi',[LokasiController::class,'index'])->name('lokasi');
+    Route::post('lokasi_save',[LokasiController::class,'save'])->name('lokasi_save');
+    Route::get('/lokasi_all',[LokasiController::class,'lokasi_all_data'])->name('lokasi_all_data');
+    Route::post('/lokasi_destroy',[LokasiController::class,'lokasi_destroy'])->name('lokasi_destroy');
+    Route::post('/lokasi_put',[LokasiController::class,'lokasi_put'])->name('lokasi_put');
 
     Route::get('/trans_event',[TransEventController::class,'index'])->name('trans_event');
     Route::get('/report_individu',[ReportIndividuController::class,'index'])->name('report_individu');

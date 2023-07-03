@@ -216,7 +216,7 @@
     function UbahData(id){
         
         $.ajax({
-          url:  "{{ route('get_pegawai') }}",
+          url:  "{{ route('pegawai_put') }}",
           data: {id:id},
           type: "POST",
           success: function(result){
