@@ -76,6 +76,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/lokasi_put',[LokasiController::class,'lokasi_put'])->name('lokasi_put');
 
     Route::get('/trans_event',[TransEventController::class,'index'])->name('trans_event');
+    Route::post('transaksi_save',[TransEventController::class,'save'])->name('transaksi_save');
+    Route::get('/transaksi_all_data',[TransEventController::class,'transaksi_all_data'])->name('transaksi_all_data');
+    Route::post('/transaksi_destroy',[TransEventController::class,'transaksi_destroy'])->name('transaksi_destroy');
+    Route::post('/transaksi_put',[TransEventController::class,'transaksi_put'])->name('transaksi_put');
+
+
     Route::get('/report_individu',[ReportIndividuController::class,'index'])->name('report_individu');
     Route::get('/report_all',[ReportAllController::class,'index'])->name('report_all'); 
 
